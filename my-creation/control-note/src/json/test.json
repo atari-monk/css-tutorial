@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Timestamps",
+    "note": [
+      "0-20; 1. Intro",
+      "20-25; 2. Create Project",
+      "25-32; 3. Prepare Layout",
+      "32-35.5; 4. Setup Visual Studio",
+      "35.5-39.5; 5. Naming Rules",
+      "39.5-41; 6. Importing Assets",
+      "41-56; 7. Post Processing",
+      "56-1:15; 8. Character Controller",
+      "1:15-1:23 9. Character Visual, Rotation",
+      "1:23-1:43 10. Animations",
+      "1:43-1:49 11. Cinemachine",
+      "1:49-2:04 12. Input System Refactor",
+      "2:04-2:17 13. Collision Detection",
+      "2:17-02:38 14. Clear Counter",
+      "02:38-02:48 15. Interact Action, C# Events",
+      "02:48-03:11 16. Selected Counter Visual, Singleton Pattern"
+    ]
+  },
+  {
+    "title": "Create New Project",
+    "note": [
+      "Install Unity Hub",
+      "Instal Unity Editor version 2022.2.1f1 (course version)",
+      "Only editor and Visual Studio Community 2022 for this",
+      "Create new Project",
+      "Select Unity Editor version 2022.2.1f1",
+      "Installed on game ssd drive",
+      "E:\\2022.2.1f1\\Editor\\Unity.exe",
+      "select 3D URP template (universal render pipeline), download template",
+      "Set Project Name to KitchenChaos",
+      "Project folder: E:\\atari-monk\\unity-course",
+      "Click New Project, editor opens",
+      "remove readme assets about URP",
+      "Edit-&gt;Project Settings-&gt;Graphics Tab check ig URP HighFidelity asset should be assign",
+      "URP Global Settings should be set to UniversalRenderPipelineGlobalSettings",
+      "On Quality tab HighFidelity should be seleted, trash/delete preforment and balanced",
+      "Go to main assets tab and delete preforment and balanced assets (4)"
+    ]
+  }
+]

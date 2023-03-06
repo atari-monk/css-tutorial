@@ -5,69 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <script type="module" src="./src/js/script.js"></script>
   </head>
   <body>
-    <div class="note center">
-      <div class="note-text">
-        <p class="note-title">
-          Timestamps
-        </p>
-        <p class="note-note">
-          0-20; 1. Intro<br />
-          20-25; 2. Create Project<br />
-          25-32; 3. Prepare Layout<br />
-          32-35.5; 4. Setup Visual Studio<br />
-          35.5-39.5; 5. Naming Rules<br />
-          39.5-41; 6. Importing Assets<br />
-          41-56; 7. Post Processing<br />
-          56-1:15; 8. Character Controller<br />
-          1:15-1:23 9. Character Visual, Rotation<br />
-          1:23-1:43 10. Animations<br />
-          1:43-1:49 11. Cinemachine<br />
-          1:49-2:04 12. Input System Refactor<br />
-          2:04-2:17 13. Collision Detection<br />
-          2:17-02:38 14. Clear Counter<br />
-          02:38-02:48 15. Interact Action, C# Events<br />
-          02:48-03:11 16. Selected Counter Visual, Singleton Pattern
-        </p>
+    <template>
+      <div class="note center">
+        <div class="note-text">
+          <p class="note-title">{%TITLE%}</p>
+          <p class="note-note">{%NOTE%}</p>
+        </div>
+        <div class="note-icon">
+          <span class="note-copy">
+            <img src="./src/img/zHgKDpN.png" alt="" />
+          </span>
+        </div>
       </div>
-      <div class="note-icon">
-        <span class="note-copy">
-          <img src="https://i.imgur.com/zHgKDpN.png" alt="" />
-        </span>
-      </div>
-    </div>
-    <div class="note center">
-      <div class="note-text">
-        <p class="note-title">
-          Create Project
-        </p>
-        <p class="note-note">
-          Install Unity Hub<br />
-          Instal Unity Editor version 2022.2.1f1 (course version)<br />
-          Only editor and Visual Studio Community 2022 for this<br />
-          Create new Project<br />
-          Select Unity Editor version 2022.2.1f1<br />
-          Installed on game ssd drive<br />
-          E:\2022.2.1f1\Editor\Unity.exe<br />
-          select 3D URP template (universal render pipeline), download template<br />
-          Set Project Name to KitchenChaos<br />
-          Project folder: E:\atari-monk\unity-course<br />
-          Click New Project, editor opens<br />
-          remove readme assets about URP<br />
-          Edit-&gt;Project Settings-&gt;Graphics Tab check ig URP HighFidelity asset should be assign<br />
-          URP Global Settings should be set to UniversalRenderPipelineGlobalSettings<br />
-          On Quality tab HighFidelity should be seleted, trash/delete preforment and balanced<br />
-          Go to main assets tab and delete preforment and balanced assets (4)
-        </p>
-      </div>
-      <div class="note-icon">
-        <span class="note-copy">
-          <img src="https://i.imgur.com/zHgKDpN.png" alt="" />
-        </span>
-      </div>
-    </div>
+    </template>
   </body>
 </html>
