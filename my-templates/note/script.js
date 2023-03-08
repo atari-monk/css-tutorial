@@ -7,7 +7,7 @@ function addHandlerRender(handler) {
 
 async function controlIndex() {
   try {
-    const data = await model.loadJson(this._page ?? 'test');
+    const data = await model.loadJson('test');
     DEBUG && console.log(data);
     createContent(data);
     let noteTexts = document.querySelectorAll('.note-text');
