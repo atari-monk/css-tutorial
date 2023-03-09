@@ -1,5 +1,6 @@
 import model from "./model.js";
 import { DEBUG } from "./config.js";
+import { DetectOsCard } from "./detect-os-card/script.js"
 
 function addHandlerRender(handler) {
   ["load"].forEach((ev) => window.addEventListener(ev, handler));
@@ -36,6 +37,11 @@ function createContent(data) {
     navEl.setAttribute("href", `#${navData.title.toLowerCase()}`);
     navItemsEl.appendChild(newNavItem);
   });
+
+  const osCard = new DetectOsCard();
+  const osCardEl = osCard.createContent();
+  const navNav = newNav.querySelector("#nav-nav");
+  navNav.appendChild(osCardEl);
   document.body.appendChild(newNav);
 }
 
