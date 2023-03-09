@@ -1,7 +1,7 @@
 const card = document.querySelector(".card");
 const cardImg = document.getElementById("card-img");
-console.log(cardImg);
 const cardh4 = document.querySelector(".card-h4");
+const system = getSystem();
 
 function setUnknown() {
   cardImg.classList.remove();
@@ -14,14 +14,14 @@ function setAndroid() {
   cardImg.classList.remove();
   cardImg.classList.add("card-img-android");
   cardImg.setAttribute("src", "android.png");
-  cardh4.textContent = "ANDROID";
+  cardh4.textContent = system.toUpperCase();
 }
 
 function setWindows() {
   cardImg.classList.remove();
   cardImg.classList.add("card-img-windows");
   cardImg.setAttribute("src", "windows.png");
-  cardh4.textContent = "WINDOWS";
+  cardh4.textContent = system.toUpperCase();
 }
 
 const System = Object.freeze({
@@ -45,4 +45,10 @@ switch (currentSys) {
   default:
     setUnknown();
     break;
+}
+
+function getSystem() {
+  const uap = new UAParser();
+  const os = uap.getOS();
+  return os.name;
 }
