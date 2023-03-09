@@ -30,7 +30,7 @@ const System = Object.freeze({
   Windows: Symbol("Windows")
 })
 
-let currentSys = System.Unknown;
+let currentSys = System.Windows;
 
 switch (currentSys) {
   case System.Unknown:
