@@ -1,6 +1,6 @@
-import { DEBUG } from "./../config.js";
+import { DEBUG } from "../config.js";
 
-export class DetectOsCard {
+export class DetectOsView {
   #system;
   #currentSystem;
   #cardImg;
@@ -31,6 +31,40 @@ export class DetectOsCard {
     }
   }
 
+  #getSystem() {
+    const uap = new UAParser();
+    const os = uap.getOS();
+    return os.name;
+  }
+
+  createContent() {
+    const template = document.getElementById("template-detect-os");
+    const card = template.content.querySelector(".card");
+    let newCard;
+    newCard = document.importNode(card, true);
+    this.#cardImg = newCard.querySelector("#card-img");
+    this.#cardh4 = newCard.querySelector(".card-h4");
+    this.#setCard();
+    return newCard;
+  }
+
+  #setCard() {
+    switch (this.#currentSystem) {
+      case this.#system.Unknown:
+        this.#setUnknown();
+        break;
+      case this.#system.Android:
+        this.#setAndroid();
+        break;
+      case this.#system.Windows:
+        this.#setWindows();
+        break;
+      default:
+        this.#setUnknown();
+        break;
+    }
+  }
+
   #setUnknown() {
     this.#cardImg.classList.remove();
     this.#cardImg.classList.add("card-img-unknown");
@@ -51,34 +85,6 @@ export class DetectOsCard {
     this.#cardImg.setAttribute("src", "./detect-os-card/windows.png");
     this.#cardh4.textContent = this.#currentSystem.toString();
   }
-
-  #getSystem() {
-    const uap = new UAParser();
-    const os = uap.getOS();
-    return os.name;
-  }
-
-  createContent() {
-    const detectOsTemplate = document.getElementById("template-detect-os");
-    const card = detectOsTemplate.content.querySelector(".card");
-    let newCard;
-    newCard = document.importNode(card, true);
-    this.#cardImg = newCard.querySelector("#card-img");
-    this.#cardh4 = newCard.querySelector(".card-h4");
-    switch (this.#currentSystem) {
-      case this.#system.Unknown:
-        this.#setUnknown();
-        break;
-      case this.#system.Android:
-        this.#setAndroid();
-        break;
-      case this.#system.Windows:
-        this.#setWindows();
-        break;
-      default:
-        this.#setUnknown();
-        break;
-    }
-    return newCard;
-  }
 }
+
+export default new DetectOsView();
