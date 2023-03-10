@@ -2,6 +2,7 @@ import model from "./model.js";
 import { DEBUG } from "./config.js";
 import navView from "./navView.js";
 import detectOsView from "./detect-os-card/detectOsView.js"
+import styleBtnView from "./styleBtnView.js"
 
 class NavController {
 
@@ -14,7 +15,8 @@ class NavController {
       const data = await model.loadJson('test');
       DEBUG && console.log(data);
       const detectOsEl = detectOsView.createContent();
-      navView.createContent(data, detectOsEl);
+      const styleBtnEl = styleBtnView.createContent();
+      navView.createContent(data, detectOsEl, styleBtnEl);
     } catch (err) {
       DEBUG && console.log(err);
     }

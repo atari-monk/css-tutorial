@@ -5,10 +5,11 @@ export class NavView {
     ["load"].forEach((ev) => window.addEventListener(ev, handler));
   }
 
-  createContent(data, detectOSCard) {
+  createContent(data, detectOSCard, styleBtn) {
     const nav = this.#createNav(data);
     this.#createNavLinks(nav, data);
     this.#createDetectOsCard(nav, detectOSCard);
+    this.#createStyleBtn(nav, styleBtn);
     document.body.appendChild(nav);
   }
 
@@ -41,6 +42,11 @@ export class NavView {
   #createDetectOsCard(nav, detectOSCard) {
     const navNav = nav.querySelector("#nav-nav");
     navNav.appendChild(detectOSCard);
+  }
+
+  #createStyleBtn(nav, styleBtn) {
+    const navItems = nav.querySelector(".nav-ul");
+    navItems.appendChild(styleBtn);
   }
 }
 

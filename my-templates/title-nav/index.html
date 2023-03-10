@@ -5,8 +5,10 @@
     <meta name="author" content="atari-monk" />
     <meta name="description" content="" />
     <title>Notes</title>
-    <link rel="stylesheet" href="./detect-os-card/style.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="./detect-os-card/detectOSStyle.css" type="text/css" />
+    <link rel="stylesheet" href="none.css" type="text/css" />
+    <link rel="stylesheet" href="mobile.css" type="text/css" />
+    <link rel="stylesheet" href="desktop.css" type="text/css" />
     <script src="./detect-os-card/node_modules/ua-parser-js/dist/ua-parser.min.js"></script>
     <script type="module" src="navController.js"></script>
   </head>
@@ -18,18 +20,6 @@
           <h1 class="nav-title center">{%TITLE%}</h1>
           <nav id="nav-nav" class="center" aria-label="primary-navigation">
             <ul class="nav-ul">
-              <li>
-                <p>
-                  Style:
-                  <a class="nav-style-link" id="style-none" href="#">None</a>
-                  <a class="nav-style-link" id="style-desktop" href="#"
-                    >Desktop</a
-                  >
-                  <a class="nav-style-link" id="style-mobile" href="#"
-                    >Mobile</a
-                  >
-                </p>
-              </li>
             </ul>
           </nav>
         </div>
@@ -47,6 +37,20 @@
           </div>
         </div>
       </template>
+      <template id="template-style-btn">
+        <li class="nav-item">
+          <p class="style-btn">
+            Style:
+            <a class="style-btn-link" id="style-none" href="#">None</a>
+            <a class="style-btn-link" id="style-desktop" href="#"
+              >Desktop</a
+            >
+            <a class="style-btn-link" id="style-mobile" href="#"
+              >Mobile</a
+            >
+          </p>
+        </li>
+      <template>
     </header>
   </body>
 </html>
