@@ -1,4 +1,4 @@
-import { DEBUG } from "./config.js"
+import { DEBUG } from "./../config.js"
 
 export class StyleBtnView {
   #styleOn;

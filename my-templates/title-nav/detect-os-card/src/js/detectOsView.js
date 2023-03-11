@@ -1,4 +1,4 @@
-import { DEBUG } from "../config.js";
+import { DEBUG } from "./../../../src/js/config.js";
 
 export class DetectOsView {
   #system;
@@ -68,21 +68,21 @@ export class DetectOsView {
   #setUnknown() {
     this.#cardImg.classList.remove();
     this.#cardImg.classList.add("card-img-unknown");
-    this.#cardImg.setAttribute("src", "./detect-os-card/unknown.png");
+    this.#cardImg.setAttribute("src", "./detect-os-card/src/img/unknown.png");
     this.#cardh4.textContent = "SYSTEM";
   }
 
   #setAndroid() {
     this.#cardImg.classList.remove();
     this.#cardImg.classList.add("card-img-android");
-    this.#cardImg.setAttribute("src", "./detect-os-card/android.png");
+    this.#cardImg.setAttribute("src", "./detect-os-card/src/img/android.png");
     this.#cardh4.textContent = this.#currentSystem.toString();
   }
 
   #setWindows() {
     this.#cardImg.classList.remove();
     this.#cardImg.classList.add("card-img-windows");
-    this.#cardImg.setAttribute("src", "./detect-os-card/windows.png");
+    this.#cardImg.setAttribute("src", "./detect-os-card/src/img/windows.png");
     this.#cardh4.textContent = this.#currentSystem.toString();
   }
 }

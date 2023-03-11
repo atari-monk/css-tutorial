@@ -1,2 +1,2 @@
-# css-tutorial
-CSS tutorial
+# html-css-js
+HTML CSS JS

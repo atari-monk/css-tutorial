@@ -1,8 +1,8 @@
-import model from "./model.js";
-import { DEBUG } from "./config.js";
-import navView from "./navView.js";
-import detectOsView from "./detect-os-card/detectOsView.js"
-import styleBtnView from "./styleBtnView.js"
+import model from "./../model.js";
+import { DEBUG } from "./../config.js";
+import navView from "./../view/navView.js";
+import detectOsView from "./../../../detect-os-card/src/js/detectOsView.js"
+import styleBtnView from "./../view/styleBtnView.js"
 
 class NavController {
 

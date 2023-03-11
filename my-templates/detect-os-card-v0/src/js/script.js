@@ -6,21 +6,21 @@ const system = getSystem();
 function setUnknown() {
   cardImg.classList.remove();
   cardImg.classList.add("card-img-unknown");
-  cardImg.setAttribute("src", "unknown.png");
+  cardImg.setAttribute("src", "./src/img/unknown.png");
   cardh4.textContent = "SYSTEM";
 }
 
 function setAndroid() {
   cardImg.classList.remove();
   cardImg.classList.add("card-img-android");
-  cardImg.setAttribute("src", "android.png");
+  cardImg.setAttribute("src", "./src/img/android.png");
   cardh4.textContent = system.toUpperCase();
 }
 
 function setWindows() {
   cardImg.classList.remove();
   cardImg.classList.add("card-img-windows");
-  cardImg.setAttribute("src", "windows.png");
+  cardImg.setAttribute("src", "./src/img/windows.png");
   cardh4.textContent = system.toUpperCase();
 }
 
