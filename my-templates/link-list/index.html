@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="atari-monk" />
+    <meta name="description" content="" />
+    <title>Notes</title>
+    <link rel="stylesheet" href="./src/css/none.css" type="text/css" />
+    <link rel="stylesheet" href="./src/css/mobile.css" type="text/css" />
+    <link rel="stylesheet" href="./src/css/desktop.css" type="text/css" />
+    <script
+      type="module"
+      src="./src/js/controller/linkListController.js"
+    ></script>
+  </head>
+
+  <body>
+    <template id="template-link-list">
+      <article id="{%#ID%}">
+        <h3>{%TITLE%}</h3>
+        <section class="list-point">
+          <ul></ul>
+        </section>
+      </article>
+    </template>
+    <template id="template-link-list-item">
+      <li class="list-point">
+        <a class="nav-link" href="">{%LINK_TEXT%}</a>
+      </li>
+    </template>
+  </body>
+</html>
