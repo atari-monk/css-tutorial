@@ -13,5 +13,37 @@
     {
       "title": "Other"
     }
+  ],
+  "sections": [
+    {
+      "text": "Coding",
+      "links": [
+        {
+          "link": "index.html?page=index/net",
+          "text": ".Net"
+        },
+        {
+          "link": "index.html?page=index/web-dev",
+          "text": "Web Dev"
+        },
+        {
+          "link": "index.html?page=index/azure",
+          "text": "Azure"
+        }
+      ]
+    },
+    {
+      "text": "Software",
+      "links": [
+        {
+          "link": "notes.html?page=note/win-11",
+          "text": "Windows 11"
+        },
+        {
+          "link": "notes.html?page=note/apps-keys",
+          "text": "Apps Keys"
+        }
+      ]
+    }
   ]
 }
