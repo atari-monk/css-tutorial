@@ -12,8 +12,7 @@ class LinkListController {
     try {
       const data = await model.loadJson('test');
       DEBUG && console.log(data);
-      const inkListEl = linkListView.createContent(data);
-      document.body.appendChild(inkListEl);
+      linkListView.createContent(data);
     } catch (err) {
       DEBUG && console.log(err);
     }
