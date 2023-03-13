@@ -1,7 +1,7 @@
 import model from "./../model.js";
 import { DEBUG } from "./../config.js";
 import navView from "./../view/navView.js";
-import detectOsView from "./../../../detect-os-card/src/js/detectOsView.js"
+import detectOsView from "./../view/detectOsView.js"
 import styleBtnView from "./../view/styleBtnView.js"
 
 class NavController {

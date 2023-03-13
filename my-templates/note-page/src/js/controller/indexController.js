@@ -13,7 +13,7 @@ class IndexController {
 
   async #controlNav() {
     try {
-      const data = await model.loadJson('note2/unity-course');
+      const data = await model.loadJson('note/unity-course');
       DEBUG && console.log(data);
       const detectOsEl = detectOsView.createContent();
       const styleBtnEl = styleBtnView.createContent();

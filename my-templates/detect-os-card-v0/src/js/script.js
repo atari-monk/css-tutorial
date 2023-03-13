@@ -3,6 +3,10 @@ const cardImg = document.getElementById("card-img");
 const cardh4 = document.querySelector(".card-h4");
 const system = getSystem();
 
+function getSystem() {
+  return new UAParser().getOS().name.toLowerCase();
+}
+
 function setUnknown() {
   cardImg.classList.remove();
   cardImg.classList.add("card-img-unknown");
@@ -25,12 +29,23 @@ function setWindows() {
 }
 
 const System = Object.freeze({
-  Unknown: Symbol("Unknown"),
-  Android: Symbol("Android"),
-  Windows: Symbol("Windows")
+  Unknown: "Unknown",
+  Android: "Android",
+  Windows: "Windows"
 })
 
-let currentSys = System.Windows;
+function getSystemEnum() {
+  switch (system) {
+    case "windows":
+      return System.Windows;
+    case "android":
+      return System.Android;
+    default:
+      return System.Unknown;
+  }
+}
+
+let currentSys = getSystemEnum();
 
 switch (currentSys) {
   case System.Unknown:
@@ -45,10 +60,4 @@ switch (currentSys) {
   default:
     setUnknown();
     break;
-}
-
-function getSystem() {
-  const uap = new UAParser();
-  const os = uap.getOS();
-  return os.name;
 }
