@@ -1,0 +1,26 @@
+{
+  "title": "Socket.IO template Azure deploy",
+  "nav": [
+    {
+      "title": "Source"
+    },
+    {
+      "title": "Description"
+    },
+    {
+      "title": "Preconditions"
+    },
+    {
+      "title": "Notes"
+    },
+    {
+      "title": "Summary"
+    }
+  ],
+  "notes": [
+    {
+      "title": "test",
+      "note": ["bla", "bla", "bla", "bla"]
+    }
+  ]
+}
