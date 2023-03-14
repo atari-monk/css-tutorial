@@ -141,3 +141,39 @@ p {
   font-weight: normal;
 }
 /* detect-os-card end */
+
+/*mark1-7 newton color sequence ROYGBIV*/
+.mark-1 {
+  background-color: red;
+  color: white;
+}
+
+.mark-2 {
+  background-color: orange;
+  color: rgb(0, 0, 0);
+}
+
+.mark-3 {
+  background-color: yellow;
+  color: rgb(0, 0, 0);
+}
+
+.mark-4 {
+  background-color: green;
+  color: white;
+}
+
+.mark-5 {
+  background-color: blue;
+  color: white;
+}
+
+.mark-6 {
+  background-color: indigo;
+  color: white;
+}
+
+.mark-7 {
+  background-color: violet;
+  color: rgb(0, 0, 0);
+}
