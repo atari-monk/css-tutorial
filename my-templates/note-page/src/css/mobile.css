@@ -22,6 +22,10 @@ body {
   font-size: 25px;
 }
 
+.nav-item {
+  margin-bottom: 5px;
+}
+
 .nav-item-link {
   font-size: 25px;
 }
@@ -212,4 +216,22 @@ p {
 .mark-7 {
   background-color: violet;
   color: rgb(0, 0, 0);
+}
+
+.source-link-li {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.description-title {
+  margin-right: 50px;
+}
+
+.precondition-item-li {
+  font-size: 25px;
+}
+
+.precondition-item-p {
+  margin: 0px;
+  margin-bottom: 5px;
 }
