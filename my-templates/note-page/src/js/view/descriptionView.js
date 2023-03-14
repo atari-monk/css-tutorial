@@ -1,28 +1,25 @@
-export class DescriptionView {
+import { View } from './view.js';
+
+export class DescriptionView extends View {
   createContent(data) {
-    const description = data.filter((note) => note.type === 'description')[0];
-    const descriptionTemplate = document.getElementById('template-description');
-    const descriptionEl = descriptionTemplate.content.querySelector('section');
     document.body.appendChild(
-      this.#createDescription(description, descriptionEl)
+      this.#createDescription(
+        this._filterOne(data, 'description'),
+        this._getParentElement('template-description', 'section')
+      )
     );
   }
 
   #createDescription(description, descriptionEl) {
-    const newDescription = document.importNode(descriptionEl, true);
-    const titleEl = newDescription.querySelector('h2');
-    titleEl.textContent = titleEl.textContent.replace(
-      /{%TITLE%}/g,
-      `${description.title}\n`
+    const newDescription = this._getNewParent(descriptionEl);
+    this._templateText(newDescription, 'h2', 'title', description.title);
+    this._templateText(
+      newDescription,
+      'p',
+      'text',
+      description.description.join('')
     );
-    const textEl = newDescription.querySelector('p');
-    textEl.textContent = textEl.textContent.replace(
-      /{%TEXT%}/g,
-      `${description.description.join('')}\n`
-    );
-    if (description.navId) {
-      newDescription.setAttribute('id', description.navId);
-    }
+    this._setAttribute(description, 'navId', newDescription, 'id');
     return newDescription;
   }
 }
