@@ -3,6 +3,7 @@ import { DEBUG } from "./../config.js";
 import navView from "./../view/navView.js";
 import detectOsView from "./../view/detectOsView.js"
 import styleBtnView from "./../view/styleBtnView.js"
+import sourceView from './../view/sourceView.js';
 import noteView from "./../view/noteView.js";
 
 class IndexController {
@@ -18,6 +19,7 @@ class IndexController {
       const detectOsEl = detectOsView.createContent();
       const styleBtnEl = styleBtnView.createContent();
       navView.createContent(data, detectOsEl, styleBtnEl);
+      sourceView.createContent(data.notes);
       noteView.createContent(data.notes);
     } catch (err) {
       DEBUG && console.log(err);

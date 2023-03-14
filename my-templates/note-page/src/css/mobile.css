@@ -63,11 +63,16 @@ body {
 
 a {
   color: green;
-  font-size: 20px;
+  font-size: 25px;
+}
+
+h2 {
+  color: green;
+  font-size: 25px;
 }
 
 p {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .style-btn {
@@ -141,6 +146,37 @@ p {
   font-weight: normal;
 }
 /* detect-os-card end */
+
+.note {
+  /* outline: dashed 1px red; */
+}
+
+.note-icon img {
+  width: 30px;
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+.note-title {
+  width: auto;
+  border-color: green;
+  border-style: none;
+  font-size: x-large;
+  line-height: 1.6;
+}
+
+.note-text {
+  width: auto;
+  border-color: green;
+  border-style: none;
+  font-size: x-large;
+  line-height: 1.6;
+}
+
+.note-note {
+  line-height: 1.6;
+  font-size: 25px;
+}
 
 /*mark1-7 newton color sequence ROYGBIV*/
 .mark-1 {
