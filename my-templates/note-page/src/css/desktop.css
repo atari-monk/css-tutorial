@@ -213,3 +213,7 @@ p {
   background-color: violet;
   color: rgb(0, 0, 0);
 }
+
+.description-title {
+  margin-right: 50px;
+}
