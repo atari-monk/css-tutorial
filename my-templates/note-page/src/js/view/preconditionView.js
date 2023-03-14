@@ -1,39 +1,27 @@
-export class PreconditionView {
+import { View } from './view.js';
+
+export class PreconditionView extends View {
   createContent(data) {
-    const precondition = data.filter((note) => note.type === 'precondition')[0];
-    const preconditionTemplate = document.getElementById(
-      'template-precondition'
-    );
-    const preconditionEl =
-      preconditionTemplate.content.querySelector('section');
-    const itemTemplate = document.getElementById('template-precondition-item');
-    const itemEl = itemTemplate.content.querySelector('li');
     document.body.appendChild(
-      this.#createPrecondition(precondition, preconditionEl, itemEl)
+      this.#createPrecondition(
+        this._filterOne(data, 'precondition'),
+        this._getParentElement('template-precondition', 'section'),
+        this._getParentElement('template-precondition-item', 'li')
+      )
     );
   }
 
   #createPrecondition(precondition, preconditionEl, itemEl) {
-    const newPrecondition = document.importNode(preconditionEl, true);
-    const titleEl = newPrecondition.querySelector('h2');
-    titleEl.textContent = titleEl.textContent.replace(
-      /{%TITLE%}/g,
-      `${precondition.title}\n`
-    );
+    const newPrecondition = this._getNewParent(preconditionEl);;
+    this._templateText(newPrecondition, 'h2', 'title', precondition.title);
     const listEl = newPrecondition.querySelector('ul');
     let newItem;
     precondition.list.forEach((text) => {
-      newItem = document.importNode(itemEl, true);
-      const textEl = newItem.querySelector('p');
-      textEl.textContent = textEl.textContent.replace(
-        /{%TEXT%}/g,
-        `${text}\n`
-      );
+      newItem = this._getNewParent(itemEl);
+      this._templateText(newItem, 'p', 'text', text);
       listEl.appendChild(newItem);
     });
-    if (precondition.navId) {
-      newPrecondition.setAttribute('id', precondition.navId);
-    }
+    this._setAttribute(precondition, 'navId', newPrecondition, 'id');
     return newPrecondition;
   }
 }
