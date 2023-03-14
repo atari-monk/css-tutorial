@@ -31,6 +31,9 @@ export class PreconditionView {
       );
       listEl.appendChild(newItem);
     });
+    if (precondition.navId) {
+      newPrecondition.setAttribute('id', precondition.navId);
+    }
     return newPrecondition;
   }
 }

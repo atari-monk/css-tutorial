@@ -27,6 +27,9 @@ export class SourceView {
       );
       listEl.appendChild(newItem);
     });
+    if (source.navId) {
+      newSource.setAttribute('id', source.navId);
+    }
     return newSource;
   }
 }

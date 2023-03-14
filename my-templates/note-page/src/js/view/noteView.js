@@ -7,9 +7,8 @@ export class NoteView {
     const noteEl = noteTemplate.content.querySelector('.note');
     const asideTemplate = document.getElementById('template-note-aside');
     const asideEl = asideTemplate.content.querySelector('aside');
-    let newNote, i;
     notes.forEach((note) => {
-      newNote = this.#createNote(newNote, noteEl, note);
+      const newNote = this.#createNote(note, noteEl);
       const textEl = newNote.querySelector('.note-text');
       if (note.params) {
         this.#createAside(asideEl, note, textEl);
@@ -51,8 +50,8 @@ export class NoteView {
     textEl.appendChild(newAside);
   }
 
-  #createNote(newNote, noteEl, note) {
-    newNote = document.importNode(noteEl, true);
+  #createNote(note, noteEl) {
+    const newNote = document.importNode(noteEl, true);
     const titleEl = newNote.querySelector('.note-title');
     titleEl.textContent = titleEl.textContent.replace(
       /{%TITLE%}/g,
@@ -70,7 +69,17 @@ export class NoteView {
         note.note.join('\n<br>')
       );
     }
+    if (note.navId) this.#createId(note, newNote);
+    if (note.hasOwnProperty('isCopy') && note.isCopy === false) {
+      const iconEl = newNote.querySelector('.note-icon');
+      iconEl.classList.add('hide');
+      console.log(iconEl.classList);
+    }
     return newNote;
+  }
+
+  #createId(note, newNote) {
+    newNote.setAttribute('id', note.navId);
   }
 
   #insertParams(text, params) {

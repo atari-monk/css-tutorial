@@ -20,6 +20,9 @@ export class DescriptionView {
       /{%TEXT%}/g,
       `${description.description.join('')}\n`
     );
+    if (description.navId) {
+      newDescription.setAttribute('id', description.navId);
+    }
     return newDescription;
   }
 }
