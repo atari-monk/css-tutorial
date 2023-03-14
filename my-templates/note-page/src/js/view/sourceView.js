@@ -21,7 +21,7 @@ export class SourceView {
       newItem = document.importNode(itemEl, true);
       const linkEl = newItem.querySelector('a');
       linkEl.setAttribute('href', link.link);
-      linkEl.textContent = newItem.textContent.replace(
+      linkEl.textContent = linkEl.textContent.replace(
         /{%LINK_TEXT%}/g,
         `${link.text}\n`
       );

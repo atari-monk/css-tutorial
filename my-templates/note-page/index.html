@@ -88,15 +88,26 @@
       </section>
     </template>
     <template id="template-source-link">
-      <li>
+      <li class="source-link-li">
         <a href="">{%LINK_TEXT%}</a>
       </li>
     </template>
     <template id="template-description">
       <section class="center" id="{%ID%}">
-        <h2 class="description-title" >{%TITLE%}</h2>
+        <h2 class="description-title">{%TITLE%}</h2>
         <p>{%TEXT%}</p>
       </section>
+    </template>
+    <template id="template-precondition">
+      <section class="center" id="{%ID%}">
+        <h2 class="precondition-title">{%TITLE%}</h2>
+        <ul></ul>
+      </section>
+    </template>
+    <template id="template-precondition-item">
+      <li class="precondition-item-li">
+        <p class="precondition-item-p">{%TEXT%}</p>
+      </li>
     </template>
   </body>
 </html>

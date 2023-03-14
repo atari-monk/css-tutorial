@@ -6,6 +6,7 @@ import styleBtnView from "./../view/styleBtnView.js"
 import sourceView from './../view/sourceView.js';
 import noteView from './../view/noteView.js';
 import descriptionView from './../view/descriptionView.js';
+import preconditionView from './../view/preconditionView.js';
 
 class IndexController {
 
@@ -22,6 +23,7 @@ class IndexController {
       navView.createContent(data, detectOsEl, styleBtnEl);
       sourceView.createContent(data.notes);
       descriptionView.createContent(data.notes);
+      preconditionView.createContent(data.notes);
       noteView.createContent(data.notes);
     } catch (err) {
       DEBUG && console.log(err);
