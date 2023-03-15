@@ -36,16 +36,19 @@ export class NoteView extends View {
   #createAside(asideEl, note, textEl) {
     const newAside = this._getNewParent(asideEl);
     const parentEl = newAside.querySelector('p');
+    const markEl = this._getParentElement('template-note-mark', 'mark');
     let j = 1;
-    const detail = note.params
-      .map((param, i) => {
-        const detail = `<mark class="mark-${j}">${param?.desc}</mark>`;
-        j++;
-        if (i > 0 && i % 6 === 0) j = 1;
-        return detail;
-      })
-      .join('<br>');
-    parentEl.innerHTML = detail;
+    let i = 1;
+    note.params.forEach((param) => {
+      const newMark = this._getNewParent(markEl);
+      newMark.classList.add(`mark-${j}`);
+      j++;
+      i++;
+      if (i > 0 && i % 6 === 0) j = 1;
+      this._templateElText(newMark, 'description', param?.desc);
+      parentEl.appendChild(newMark);
+      parentEl.appendChild(this._createBr());
+    });
     textEl.appendChild(newAside);
   }
 

@@ -24,6 +24,13 @@ export class View {
     );
   }
 
+  _templateElText(element, template, data) {
+    element.textContent = element.textContent.replace(
+      new RegExp(`{%${template.toUpperCase()}%}`),
+      data
+    );
+  }
+
   _templateHtml(element, template, data) {
     element.innerHTML = element.innerHTML.replace(
       new RegExp(`{%${template.toUpperCase()}%}`),
@@ -50,5 +57,9 @@ export class View {
       return;
     const childEl = element.querySelector(selector);
     childEl.classList.add(cssClass);
+  }
+
+  _createBr() {
+    return document.createElement('br');
   }
 }
