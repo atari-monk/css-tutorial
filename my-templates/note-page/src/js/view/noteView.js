@@ -8,48 +8,12 @@ export class NoteView extends View {
     const asideEl = this._getParentElement('template-note-aside', 'aside');
     notes.forEach((note) => {
       const newNote = this.#createNote(note, noteEl);
-      const textEl = newNote.querySelector('.note-text');
-      if (note.params) {
-        this.#createAside(asideEl, note, textEl);
+      if (note.hasOwnProperty('params')) {
+        this.#createAside(asideEl, note, newNote.querySelector('.note-text'));
       }
       document.body.appendChild(newNote);
     });
     this.#setupCopyBtns();
-  }
-
-  #setupCopyBtns() {
-    let noteTexts = document.querySelectorAll('.note-text');
-    let noteCopies = document.querySelectorAll('.note-copy');
-    let i = 0;
-    noteCopies.forEach((copyText) => {
-      let noteText = noteTexts[i];
-      copyText.addEventListener('click', () => {
-        let title = noteText.querySelector('.note-title');
-        let text = noteText.querySelector('.note-note');
-        var txt = `${title.textContent}${text.textContent}`;
-        navigator.clipboard.writeText(txt);
-      });
-      i++;
-    });
-  }
-
-  #createAside(asideEl, note, textEl) {
-    const newAside = this._getNewParent(asideEl);
-    const parentEl = newAside.querySelector('p');
-    const markEl = this._getParentElement('template-note-mark', 'mark');
-    let j = 1;
-    let i = 1;
-    note.params.forEach((param) => {
-      const newMark = this._getNewParent(markEl);
-      newMark.classList.add(`mark-${j}`);
-      j++;
-      i++;
-      if (i > 0 && i % 6 === 0) j = 1;
-      this._templateElText(newMark, 'description', param?.desc);
-      parentEl.appendChild(newMark);
-      parentEl.appendChild(this._createBr());
-    });
-    textEl.appendChild(newAside);
   }
 
   #createNote(note, noteEl) {
@@ -60,7 +24,7 @@ export class NoteView extends View {
       this._templateHtml(
         noteTextEl,
         'note',
-        this.#insertParams(note.note.join('\n<br>'), note.params)
+        this.#insertParams(note.note.join('\n<br>') + '\n', note.params)
       );
     } else {
       this._templateHtml(noteTextEl, 'note', note.note.join('\n<br>'));
@@ -76,12 +40,57 @@ export class NoteView extends View {
 
   #getParams(params) {
     let j = 1;
-    return params.map((param, i) => {
-      const mark = `<mark class="mark-${j}">${param?.name}</mark>`;
+    const markEl = this._getParentElement('template-note-mark', 'mark');
+    const result = [];
+    params.forEach((param, i) => {
+      const newMark = this._getNewParent(markEl);
+      newMark.classList.add(`mark-${j}`);
+      this._templateElText(newMark, 'text', param?.name);
       j++;
       if (i > 0 && i % 6 === 0) j = 1;
-      return mark;
+      result.push(newMark.outerHTML);
     });
+    return result;
+  }
+
+  #createAside(asideEl, note, textEl) {
+    const newAside = this._getNewParent(asideEl);
+    const parentEl = newAside.querySelector('p');
+    const markEl = this._getParentElement('template-note-mark', 'mark');
+    let j = 1;
+    note.params.forEach((param, i) => {
+      const newMark = this._getNewParent(markEl);
+      newMark.classList.add(`mark-${j}`);
+      j++;
+      if (i > 0 && i % 6 === 0) j = 1;
+      this._templateElText(newMark, 'text', param?.desc + '\n');
+      parentEl.appendChild(newMark);
+      parentEl.appendChild(this._createBr());
+    });
+    textEl.appendChild(newAside);
+  }
+
+  #setupCopyBtns() {
+    const noteTexts = document.querySelectorAll('.note-text');
+    const noteCopies = document.querySelectorAll('.note-copy');
+    noteCopies.forEach((copyText, i) => {
+      const noteText = noteTexts[i];
+      copyText.addEventListener('click', () => {
+        this.#copyText(noteText);
+      });
+    });
+  }
+
+  #copyText(noteText) {
+    const title = noteText.querySelector('.note-title');
+    const text = noteText.querySelector('.note-note');
+    const aside = noteText.querySelector('aside');
+    let asideTxt;
+    if (aside) asideTxt = aside.querySelector('p').textContent;
+    const txt = asideTxt
+      ? `${title.textContent}${text.textContent}aside:\n${asideTxt}`
+      : `${title.textContent}${text.textContent}`;
+    navigator.clipboard.writeText(txt);
   }
 }
 
