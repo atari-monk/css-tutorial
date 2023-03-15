@@ -66,4 +66,9 @@ export class View {
   _createBr() {
     return document.createElement('br');
   }
+
+  _scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+    console.log('scrolling to bottom!');
+  }
 }

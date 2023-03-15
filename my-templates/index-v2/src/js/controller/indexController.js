@@ -20,7 +20,7 @@ class IndexController {
       navView.createContent(data, detectOsEl, styleBtnEl);
       linkListView.createContent(data);
     } catch (err) {
-      DEBUG && console.log(err);
+      console.log(err);
     }
   }
 }
