@@ -1,35 +1,27 @@
-export class SourceView {
+import { View } from './view.js';
+
+export class SourceView extends View {
   createContent(data) {
-    const source = data.filter((note) => note.type === 'source')[0];
-    const sourceTemplate = document.getElementById('template-source');
-    const sourceEl = sourceTemplate.content.querySelector('section');
-    const linkTemplate = document.getElementById('template-source-link');
-    const itemEl = linkTemplate.content.querySelector('li');
-    document.body.appendChild(this.#createSource(source, sourceEl, itemEl));
+    document.body.appendChild(
+      this.#createSource(
+        this._filterOne(data, 'source'),
+        this._getParentElement('template-source', 'section'),
+        this._getParentElement('template-source-link', 'li')
+      )
+    );
   }
 
   #createSource(source, sourceEl, itemEl) {
-    const newSource = document.importNode(sourceEl, true);
-    const titleEl = newSource.querySelector('h2');
-    titleEl.textContent = titleEl.textContent.replace(
-      /{%TITLE%}/g,
-      `${source.title}\n`
-    );
+    const newSource = this._getNewParent(sourceEl);
+    this._templateText(newSource, 'h2', 'title', source.title);
     const listEl = newSource.querySelector('ul');
     let newItem;
     source.links.forEach((link) => {
-      newItem = document.importNode(itemEl, true);
-      const linkEl = newItem.querySelector('a');
-      linkEl.setAttribute('href', link.link);
-      linkEl.textContent = linkEl.textContent.replace(
-        /{%LINK_TEXT%}/g,
-        `${link.text}\n`
-      );
+      newItem = this._getNewParent(itemEl);
+      this._templateLink(newItem, 'link_text', link);
       listEl.appendChild(newItem);
     });
-    if (source.navId) {
-      newSource.setAttribute('id', source.navId);
-    }
+    this._setAttribute(source, 'navId', newSource, 'id');
     return newSource;
   }
 }

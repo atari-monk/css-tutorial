@@ -12,7 +12,7 @@ export class PreconditionView extends View {
   }
 
   #createPrecondition(precondition, preconditionEl, itemEl) {
-    const newPrecondition = this._getNewParent(preconditionEl);;
+    const newPrecondition = this._getNewParent(preconditionEl);
     this._templateText(newPrecondition, 'h2', 'title', precondition.title);
     const listEl = newPrecondition.querySelector('ul');
     let newItem;

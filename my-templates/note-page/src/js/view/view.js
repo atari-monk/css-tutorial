@@ -20,6 +20,23 @@ export class View {
     );
   }
 
+  _templateText(element, selector, template, data) {
+    const childEl = element.querySelector(selector);
+    childEl.textContent = childEl.textContent.replace(
+      new RegExp(`{%${template.toUpperCase()}%}`),
+      data
+    );
+  }
+
+  _templateLink(element, template, data) {
+    const linkEl = element.querySelector('a');
+    linkEl.setAttribute('href', data.link);
+    linkEl.textContent = linkEl.textContent.replace(
+      new RegExp(`{%${template.toUpperCase()}%}`),
+      data.text
+    );
+  }
+
   _setAttribute(data, propName, element, attributeName) {
     if (data.hasOwnProperty(propName) === false) return;
     element.setAttribute(attributeName, data[propName]);
