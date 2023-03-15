@@ -1,12 +1,11 @@
 import * as tool from './../tool.js';
+import { View } from './view.js';
 
-export class NoteView {
+export class NoteView extends View {
   createContent(data) {
-    const notes = data.filter((note) => note.type === 'note');
-    const noteTemplate = document.getElementById('template-note');
-    const noteEl = noteTemplate.content.querySelector('.note');
-    const asideTemplate = document.getElementById('template-note-aside');
-    const asideEl = asideTemplate.content.querySelector('aside');
+    const notes = this._filterMany(data, 'note');
+    const noteEl = this._getParentElement('template-note', '.note');
+    const asideEl = this._getParentElement('template-note-aside', 'aside');
     notes.forEach((note) => {
       const newNote = this.#createNote(note, noteEl);
       const textEl = newNote.querySelector('.note-text');
@@ -35,7 +34,7 @@ export class NoteView {
   }
 
   #createAside(asideEl, note, textEl) {
-    const newAside = document.importNode(asideEl, true);
+    const newAside = this._getNewParent(asideEl);
     const parentEl = newAside.querySelector('p');
     let j = 1;
     const detail = note.params
@@ -51,35 +50,21 @@ export class NoteView {
   }
 
   #createNote(note, noteEl) {
-    const newNote = document.importNode(noteEl, true);
-    const titleEl = newNote.querySelector('.note-title');
-    titleEl.textContent = titleEl.textContent.replace(
-      /{%TITLE%}/g,
-      `${note.title}\n`
-    );
+    const newNote = this._getNewParent(noteEl);
+    this._templateText(newNote, '.note-title', 'title', note.title);
     const noteTextEl = newNote.querySelector('.note-note');
-    if (note.params) {
-      noteTextEl.innerHTML = noteTextEl.textContent.replace(
-        /{%NOTE%}/g,
+    if (note.hasOwnProperty('params')) {
+      this._templateHtml(
+        noteTextEl,
+        'note',
         this.#insertParams(note.note.join('\n<br>'), note.params)
       );
     } else {
-      noteTextEl.innerHTML = noteTextEl.textContent.replace(
-        /{%NOTE%}/g,
-        note.note.join('\n<br>')
-      );
+      this._templateHtml(noteTextEl, 'note', note.note.join('\n<br>'));
     }
-    if (note.navId) this.#createId(note, newNote);
-    if (note.hasOwnProperty('isCopy') && note.isCopy === false) {
-      const iconEl = newNote.querySelector('.note-icon');
-      iconEl.classList.add('hide');
-      console.log(iconEl.classList);
-    }
+    this._setAttribute(note, 'navId', newNote, 'id');
+    this._hideElement(note, 'isCopy', newNote, '.note-icon', 'hide');
     return newNote;
-  }
-
-  #createId(note, newNote) {
-    newNote.setAttribute('id', note.navId);
   }
 
   #insertParams(text, params) {
