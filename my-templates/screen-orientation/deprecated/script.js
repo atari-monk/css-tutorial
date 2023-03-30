@@ -9,6 +9,7 @@ window.addEventListener(
   orientationEvent,
   function () {
     testEl.innerHTML = `The orientation of the screen is: ${window.orientation}, width: ${screen.width}`;
+    console.log(window.orientation);
   },
   false
 );
