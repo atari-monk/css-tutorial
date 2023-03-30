@@ -1,3 +1,4 @@
+//https://stackoverflow.com/questions/1649086/detect-rotation-of-android-phone-in-the-browser-with-javascript
 const testEl = document.querySelector('#test');
 
 const supportsOrientationChange = 'onorientationchange' in window,
