@@ -1,9 +1,13 @@
-screen.addEventListener('orientationchange', () => {
-  console.log(`The orientation of the screen is: ${screen.orientation}`);
-  const testEl = document.querySelector('#test');
-  testEl.innerHTML = `The orientation of the screen is: ${screen.orientation}`;
-});
-
-//document.addEventListener('load')
 const testEl = document.querySelector('#test');
-testEl.innerHTML = `The orientation of the screen is: ${screen.orientation}`;
+
+const supportsOrientationChange = 'onorientationchange' in window,
+  orientationEvent = supportsOrientationChange ? 'orientationchange' : 'resize';
+console.log('support:', supportsOrientationChange);
+
+window.addEventListener(
+  orientationEvent,
+  function () {
+    testEl.innerHTML = `The orientation of the screen is: ${window.orientation}, width: ${screen.width}`;
+  },
+  false
+);
