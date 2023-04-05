@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-block-start: var(--metric-box-spacing);
+}
+
+h1 {
+  margin-block-end: var(--metric-box-spacing);
+}
+
+header,
+footer {
+  background-color: var(--color-off-white);
+  text-align: center;
+}
+
+header {
+  padding: var(--metric-box-spacing);
+  background-color: hsl(140deg 70% 95%);
+  font-size: 1.4em;
+}
+
+main {
+  padding: var(--metric-box-spacing);
+  min-block-size: calc(100vh - 8em);
+}
+
+footer {
+  padding: calc(var(--metric-box-spacing) / 2);
+  background-color: hsl(200deg 70% 95%);
+}
+
+.card {
+  padding: var(--metric-box-spacing);
+  background-color: var(--color-off-white);
+  border-radius: var(--metric-radius);
+  box-shadow: var(--generic-shadow);
+}
