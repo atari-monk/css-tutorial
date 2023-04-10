@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rysunek twarzy w CSS</title>
+	<style>
+		.face {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			background-color: #ffe0bd;
+			position: relative;
+			margin: 50px auto;
+			box-shadow: 0 0 0 20px #ffe0bd;
+		}
+		.eye {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: #fff;
+			position: absolute;
+			top: 40px;
+			left: 30px;
+			box-shadow: 0 0 0 10px #fff;
+		}
+		.eye::before {
+			content: "";
+			display: block;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: #333;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+		.mouth {
+			width: 80px;
+			height: 20px;
+			border-bottom-left-radius: 40px 20px;
+			border-bottom-right-radius: 40px 20px;
+			background-color: #333;
+			position: absolute;
+			top: 100px;
+			left: 60px;
+			transform: rotate(-20deg);
+			box-shadow: 0 0 0 10px #ffe0bd;
+		}
+	</style>
+</head>
+<body>
+	<div class="face">
+		<div class="eye"></div>
+		<div class="eye" style="left: 130px;"></div>
+		<div class="mouth"></div>
+	</div>
+</body>
+</html>
